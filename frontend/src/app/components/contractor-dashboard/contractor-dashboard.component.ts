@@ -29,6 +29,10 @@ export class ContractorDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData(){
     if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('token');
       if (token) {
@@ -88,6 +92,7 @@ export class ContractorDashboardComponent implements OnInit {
         console.log('Estimation Response:', response);
         this.estimations[input._id] = response.totalCost;
         alert("Successfully Estimated!!! Total: ₹" + response.totalCost.toLocaleString());
+        this.loadData();
       },
       error: (err) => {
         console.error('Estimation failed:', err);
