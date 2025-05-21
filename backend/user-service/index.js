@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoute');
 const cors = require('cors');
+const path = require('path');
 
 // Initialize Express app
 const app = express();

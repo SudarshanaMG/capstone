@@ -1,0 +1,59 @@
+services:
+  service1:
+    build: ./backend/user-service
+    ports:
+      - "3001:3001"
+    networks:
+      - app-network
+    env_file:
+      - ./backend/user-service/.env
+
+
+  service2:
+    build: ./backend/user-inputs
+    ports:
+      - "3002:3002"
+    networks:
+      - app-network
+    env_file:
+      - ./backend/user-inputs/.env
+
+  service3:
+    build: ./backend/contractor-service
+    ports:
+      - "3003:3003"
+    networks:
+      - app-network
+    env_file:
+      - ./backend/contractor-service/.env
+
+  service4:
+    build: ./backend/estimation-service
+    ports:
+      - "3004:3004"
+    networks:
+      - app-network
+    env_file:
+      - ./backend/estimation-service/.env
+
+  service5:
+    build: ./backend/material-service
+    ports:
+      - "3005:3005"
+    networks:
+      - app-network
+    env_file:
+      - ./backend/material-service/.env
+  
+  angular-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    container_name: angular-frontend
+
+
+networks:
+  app-network:
+    driver: bridge

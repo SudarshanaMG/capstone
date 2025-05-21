@@ -145,22 +145,16 @@ frontend/
 
 ##  Setup Instructions
 
-###  Backend Setup
+###  Backend Setup and Frontend Setup
 
 ```bash
-cd backend
 # Create .env and configure DB_URI, JWT_SECRET, etc.
 docker-compose up --build
 
 ```
 
-###  Frontend Setup
 
-```bash
-cd frontend
-npm install
-ng serve
-```
+
 
 ---
 
