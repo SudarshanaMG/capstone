@@ -184,7 +184,7 @@
           <div class="card-actions">
             <button *ngIf="input.done" class="action-btn view-btn" (click)="onViewDetails(input)">View Estimations</button>
             <button *ngIf="!input.done" class="action-btn edit-btn" (click)="onEdit(input)">Edit</button>
-            <button class="action-btn delete-btn">Delete</button>
+            <button class="action-btn delete-btn" (click)="onDelete(input)">Delete</button>
           </div>
         </div>
       </div>

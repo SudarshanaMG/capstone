@@ -20,9 +20,9 @@ export class UserManagementComponent implements OnInit {
   selectedUser: User | null = null;
   editForm: FormGroup;
   isEditing = false;
-    inputs: UserInput[] = [];
-    isLoading = true;
-    error: string | null = null;
+  inputs: UserInput[] = [];
+  isLoading = true;
+  error: string | null = null;
   contractorName?: string;
   isViewing = false;
 
@@ -178,6 +178,19 @@ export class UserManagementComponent implements OnInit {
   onEdit(input: UserInput): void {
     // console.log('Edit input:', input);
     this.router.navigate(['/add-input'], { state: { inputData: input } });
+  }
+
+  onDelete(input: UserInput): void {
+    if (confirm('Are you sure you want to delete this input?')) {
+      const inputId = input._id;
+      this.inputService.deleteInput(input._id).subscribe({
+        next: () => {
+          this.inputs = this.inputs.filter(input => input._id !== inputId);
+        },
+        error: (err) => console.error('Delete failed:', err)
+      });
+      this.loadInputs(input.userEmail);
+    }
   }
   
   getArea(): number {

@@ -7,6 +7,7 @@ const { authMiddleware, authRoles} = require('../middleware/authMiddleware');
 router.get('/', authMiddleware, inputsController.getAllInputs);
 router.post('/', authMiddleware, inputsController.createInput);
 router.put('/:id', authMiddleware, inputsController.updateInput);
+router.delete('/:id', authMiddleware, inputsController.deleteInput);
 router.get('/getid/:id',authMiddleware, inputsController.getInputById);
 router.get('/getByName', authMiddleware, inputsController.getInputByUserName);
 router.get('/getByEmail', inputsController.getInputByEmail);

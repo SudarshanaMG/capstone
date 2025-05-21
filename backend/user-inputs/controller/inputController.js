@@ -66,6 +66,21 @@ exports.updateInput = async (req, res) => {
   }
 };
 
+exports.deleteInput = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deletedInput = await Input.findByIdAndDelete(id);
+
+    if (!deletedInput) {
+      return res.status(404).json({ message: 'Estimation input not found' });
+    }
+    res.status(200).json({ message: 'Estimation input deleted successfully', deletedInput });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 exports.getInputById = async (req, res) => {
   try {
     const input = await Input.findById(req.params.id);

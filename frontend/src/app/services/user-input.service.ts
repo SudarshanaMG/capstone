@@ -28,6 +28,10 @@ export class UserInputService {
   updateInput(id: string, inputData: Partial<UserInput>): Observable<UserInput> {
     return this.http.put<UserInput>(`${this.baseUrl}/${id}`, inputData);
   }
+
+  deleteInput(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/${id}`);
+  }
   
   getInputs(): Observable<UserInput[]> {
     return this.http.get<UserInput[]>(`${this.baseUrl}/`);
